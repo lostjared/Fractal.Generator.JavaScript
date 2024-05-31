@@ -1,5 +1,7 @@
 # Fractal Generator
 
+![screenshot](https://github.com/lostjared/Fractal.Generator.JavaScript/blob/main/screenshot.jpg)
+
 This project is a Fractal Generator that uses JavaScript and HTML5 Canvas to render fractals. The generator allows users to input various parameters to customize the fractal and provides options to save the generated fractal image.
 
 ## Features
