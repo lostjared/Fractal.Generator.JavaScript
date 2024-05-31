@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Generator</title>
+    <script src="math.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 420px;
+            margin: auto;
+        }
+        .label, .input {
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .label {
+            width: 75px;
+        }
+        .input {
+            width: calc(100% - 90px);
+        }
+        .button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .can_cls {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fractal Generator</h1>
+        <div class="label">Real:</div><input id="input_real" class="input" type="text" value="-0.743643887032151"><br>
+        <div class="label">Imaginary:</div><input id="input_imag" class="input" type="text" value="0.142625924205330"><br>
+        <div class="label">Zoom:</div><input id="input_zoom" class="input" type="text" value="1900"><br>
+        <div class="label">Iterations:</div><input id="input_iterations" class="input" type="text" value="150"><br>
+        <div class="label"></div><input style="display: none;" id="input_cores" class="input" type="text" value="8"><br>
+        <div class="label"></div><input style="display: none;" id="input_width" class="input" type="text" value="400"><br>
+        <div class="label"></div><input style="display: none;"id="input_height" class="input" type="text" value="400"><br>
+        <button id="btn_gen" class="button">Generate</button>
+        <button id="btn_save" class="button">Save</button><br>
+        <div id="wait"></div>
+    </div>
+    <div class="can_cls" id="can"><canvas id="canvas" width="640" height="480"></canvas></div>
+    <script src="fractal.js"></script>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        document.getElementById('btn_gen').addEventListener('click', generateFractal);
+        document.getElementById('btn_save').addEventListener('click', saveFractal);
+        
+        function generateFractal() {
+            const real = parseFloat(document.getElementById('input_real').value);
+            const imag = parseFloat(document.getElementById('input_imag').value);
+            const zoom = parseFloat(document.getElementById('input_zoom').value);
+            const iterations = parseInt(document.getElementById('input_iterations').value);
+            const cores = parseInt(document.getElementById('input_cores').value);
+            const width = parseInt(document.getElementById('input_width').value);
+            const height = parseInt(document.getElementById('input_height').value);
+            canvas.width = width;
+            canvas.height = height;
+            const wait_msg = document.getElementById("wait");
+            wait_msg.innerHTML = "Loading....";
+            setTimeout(() => {
+                const fractal = new Fractal(real, imag, zoom, iterations, cores);
+                fractal.draw(ctx, width, height);
+                wait_msg.innerHTML = "";
+            }, 100);
+        }
+
+        function saveFractal() {
+            const link = document.createElement('a');
+            link.download = 'fractal.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
