@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julia Fractal Generator</title>
+    <script src="math.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 420px;
+            margin: auto;
+        }
+        .label, .input {
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .label {
+            width: 75px;
+        }
+        .input {
+            width: calc(100% - 90px);
+        }
+        .button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .can_cls {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Julia Fractal Generator</h1>
+        <div class="label">Real:</div><input id="input_real" class="input" type="text" value="-0.7"><br>
+        <div class="label">Imaginary:</div><input id="input_imag" class="input" type="text" value="0.27015"><br>
+        <div class="label">Zoom:</div><input id="input_zoom" class="input" type="text" value="1"><br>
+        <div class="label">Iterations:</div><input id="input_iterations" class="input" type="text" value="100"><br>
+        <div class="label">ParamA:</div><input id="input_param_a" class="input" type="text" value="-0.7"><br>
+        <div class="label">ParamB:</div><input id="input_param_b" class="input" type="text" value="0.27015"><br>
+  <button id="btn_gen" class="button">Generate</button>
+        <button id="btn_save" class="button">Save</button><br>
+        <div id="wait"></div>
+    </div>
+    <div class="can_cls" id="can"><canvas id="canvas" width="640" height="480"></canvas></div>
+    <script src="fractal.js"></script>
+    <script src="gen.js"></script>
+</body>
+</html>
