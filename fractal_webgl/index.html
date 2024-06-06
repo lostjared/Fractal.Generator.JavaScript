@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Generator</title>
+    <style>
+        body { text-align: center; }
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body>
+    <h1>Fractal Generator</h1>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <br>
+    <button id="btn_gen">Generate Fractal</button>
+    <button id="btn_save" style="display: none;">Save Fractal</button>
+    <p id="wait"></p>
+    <br>
+    <label for="input_real">Real:</label>
+    <input id="input_real" type="number" value="-0.743643887032151">
+    <label for="input_imag">Imaginary:</label>
+    <input id="input_imag" type="number" value="0.142625924205330">
+    <label for="input_zoom">Zoom:</label>
+    <input id="input_zoom" type="number" value="1000" step="0.1">
+    <label for="input_iterations">Iterations:</label>
+    <input id="input_iterations" type="number" value="100">
+    <label for="input_cores" style="display: none; ">Cores:</label>
+    <input id="input_cores" type="number" value="4" style="display: none;">
+    <label for="input_width">Width:</label>
+    <input id="input_width" type="number" value="800">
+    <label for="input_height">Height:</label>
+    <input id="input_height" type="number" value="600">
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 a_position;
+        void main() {
+            gl_Position = a_position;
+        }
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec2 u_resolution;
+        uniform vec2 u_center;
+        uniform float u_zoom;
+        uniform int u_iterations;
+        uniform float u_seed;
+    
+        float rand(float n) {
+            return fract(sin(n) * 43758.5453123);
+        }
+    
+        int mandelbrot(vec2 c) {
+            vec2 z = vec2(0.0);
+            int n = 0;
+            for (int i = 0; i < 1000; i++) {
+                if (i >= u_iterations) break;
+                z = vec2(
+                    z.x * z.x - z.y * z.y + c.x,
+                    2.0 * z.x * z.y + c.y
+                );
+                if (dot(z, z) > 4.0) break;
+                n++;
+            }
+            return n;
+        }
+    
+        void main() {
+            vec2 uv = gl_FragCoord.xy / u_resolution;
+            vec2 c = u_center + (uv - 0.5) * (1.0 / u_zoom);
+            int n = mandelbrot(c);
+            float r = rand(float(n) + u_seed);
+            float g = rand(float(n) + u_seed + 1.0);
+            float b = rand(float(n) + u_seed + 2.0);
+            vec3 color = vec3(r, g, b);
+            if (n == u_iterations) {
+                gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+            } else {
+                gl_FragColor = vec4(color, 1.0);
+            }
+        }
+    </script>
+    <script src="gen_webgl.js"></script>
+</body>
+</html>
