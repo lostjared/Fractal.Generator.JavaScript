@@ -5,7 +5,8 @@
 This project is a Fractal Generator that uses JavaScript and HTML5 Canvas to render fractals. The generator allows users to input various parameters to customize the fractal and provides options to save the generated fractal image.
 
 - contains a Julia Fractal generator in the julia/ subdirectory. 
--  contains a WebGL implementation of a Fractal generator that has much better performance in the fractal_webgl/ subdirectory.
+- contains a WebGL implementation of a Fractal generator that has much better performance in the fractal_webgl/ subdirectory.
+- contains a WebGL impelmentation of a Julia Fractal generator that ha smuch better performance in the julia_webgl/ subdirectory.
 
 ## Features
 
