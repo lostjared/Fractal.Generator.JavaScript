@@ -26,6 +26,11 @@ and iterations.
 - Displays a loading message while generating the fractal.
 - Option to save the generated fractal image as a PNG file.
 
+## Known Issues
+
+- Does not seem to be working on Android.
+
+
 ## Getting Started
 
 ### Prerequisites
