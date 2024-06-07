@@ -28,7 +28,7 @@ and iterations.
 
 ## Known Issues
 
-- Does not seem to be working on Android.
+- WebGL versions do not seem to be working on Android.
 
 
 ## Getting Started
