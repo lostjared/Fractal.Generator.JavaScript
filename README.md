@@ -8,6 +8,16 @@ This project is a Fractal Generator that uses JavaScript and HTML5 Canvas to ren
 - contains a WebGL implementation of a Fractal generator that has much better performance in the fractal_webgl/ subdirectory.
 - contains a WebGL impelmentation of a Julia Fractal generator that ha smuch better performance in the julia_webgl/ subdirectory.
 
+Live versions of this project:
+
+http://lostsidedead.biz/fractal-gl
+
+http://lostsidedead.biz/julia-gl
+
+http://lostsidedead.biz/fractal
+
+http://lostsidedead.biz/julia
+
 ## Features
 
 - Customizable parameters for real and imaginary parts, zoom, 
