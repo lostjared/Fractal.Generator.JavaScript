@@ -18,6 +18,10 @@ http://lostsidedead.biz/fractal
 
 http://lostsidedead.biz/julia
 
+## Known Issues
+
+- WebGL versions do not seem to be working on Android.
+
 ## Features
 
 - Customizable parameters for real and imaginary parts, zoom, 
@@ -25,10 +29,6 @@ and iterations.
 - Generates fractals using HTML5 Canvas.
 - Displays a loading message while generating the fractal.
 - Option to save the generated fractal image as a PNG file.
-
-## Known Issues
-
-- WebGL versions do not seem to be working on Android.
 
 
 ## Getting Started
