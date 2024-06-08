@@ -20,7 +20,7 @@ http://lostsidedead.biz/julia
 
 ## Known Issues
 
-- WebGL versions do not seem to be working on Android.
+- WebGL versions do not seem to be working on Android. If you know why and have a fix please submit a pull request. Thank you.
 
 ## Features
 
